@@ -28,7 +28,7 @@ func init() {
 }
 
 func inputPaging(reader *bufio.Reader) (int32, int32) {
-	fmt.Print("Enter offset (default 1): ")
+	fmt.Print("Nhập trang (mặc định 1): ")
 	offsetStr, _ := reader.ReadString('\n')
 	offsetStr = cleanInput(offsetStr)
 	offset := int32(1)
@@ -38,7 +38,7 @@ func inputPaging(reader *bufio.Reader) (int32, int32) {
 		}
 	}
 
-	fmt.Print("Enter limit (default 10): ")
+	fmt.Print("Nhập số bản ghi mỗi trang (mặc định 10): ")
 	limitStr, _ := reader.ReadString('\n')
 	limitStr = cleanInput(limitStr)
 	limit := int32(10)
@@ -84,15 +84,15 @@ func cleanInput(s string) string {
 // ================== Harvest Record Service Tests ==================
 
 func (c *CropServiceClient) TestCreateHarvestRecord() {
-	fmt.Println("\n=== Test Create Harvest Record ===")
+	fmt.Println("\n=== Kiểm thử Tạo bản ghi Thu hoạch ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter planting cycle ID: ")
+	fmt.Print("Nhập ID chu kỳ trồng: ")
 	plantingCycleId, _ := reader.ReadString('\n')
 	plantingCycleId = cleanInput(plantingCycleId)
 
-	fmt.Print("Enter harvest date (YYYY-MM-DD): ")
+	fmt.Print("Nhập ngày thu hoạch (YYYY-MM-DD): ")
 	harvestDateStr, _ := reader.ReadString('\n')
 	harvestDateStr = cleanInput(harvestDateStr)
 	var harvestDate *timestamppb.Timestamp
@@ -102,7 +102,7 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter quantity (kg): ")
+	fmt.Print("Nhập khối lượng (kg): ")
 	quantityStr, _ := reader.ReadString('\n')
 	quantityStr = cleanInput(quantityStr)
 	quantity := float64(100.0)
@@ -112,15 +112,15 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter quality grade: ")
+	fmt.Print("Nhập hạng chất lượng: ")
 	qualityGrade, _ := reader.ReadString('\n')
 	qualityGrade = cleanInput(qualityGrade)
 
-	fmt.Print("Enter size classification: ")
+	fmt.Print("Nhập phân loại kích cỡ: ")
 	sizeClassification, _ := reader.ReadString('\n')
 	sizeClassification = cleanInput(sizeClassification)
 
-	fmt.Print("Enter market price per kg: ")
+	fmt.Print("Nhập giá thị trường mỗi kg: ")
 	priceStr, _ := reader.ReadString('\n')
 	priceStr = cleanInput(priceStr)
 	price := float64(10.0)
@@ -130,7 +130,7 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter labor hours: ")
+	fmt.Print("Nhập số giờ lao động: ")
 	laborHoursStr, _ := reader.ReadString('\n')
 	laborHoursStr = cleanInput(laborHoursStr)
 	laborHours := float64(8.0)
@@ -140,7 +140,7 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter labor cost: ")
+	fmt.Print("Nhập chi phí lao động: ")
 	laborCostStr, _ := reader.ReadString('\n')
 	laborCostStr = cleanInput(laborCostStr)
 	laborCost := float64(50.0)
@@ -150,7 +150,7 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter packaging cost: ")
+	fmt.Print("Nhập chi phí đóng gói: ")
 	packagingCostStr, _ := reader.ReadString('\n')
 	packagingCostStr = cleanInput(packagingCostStr)
 	packagingCost := float64(10.0)
@@ -160,11 +160,11 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter storage location: ")
+	fmt.Print("Nhập địa điểm lưu trữ: ")
 	storageLocation, _ := reader.ReadString('\n')
 	storageLocation = cleanInput(storageLocation)
 
-	fmt.Print("Enter storage temperature: ")
+	fmt.Print("Nhập nhiệt độ lưu trữ: ")
 	tempStr, _ := reader.ReadString('\n')
 	tempStr = cleanInput(tempStr)
 	temperature := float64(4.0)
@@ -174,15 +174,15 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter buyer information: ")
+	fmt.Print("Nhập thông tin người mua: ")
 	buyerInfo, _ := reader.ReadString('\n')
 	buyerInfo = cleanInput(buyerInfo)
 
-	fmt.Print("Enter weather at harvest: ")
+	fmt.Print("Nhập thời tiết lúc thu hoạch: ")
 	weather, _ := reader.ReadString('\n')
 	weather = cleanInput(weather)
 
-	fmt.Print("Enter plant health rating (1-5): ")
+	fmt.Print("Nhập đánh giá sức khỏe cây (1-5): ")
 	ratingStr, _ := reader.ReadString('\n')
 	ratingStr = cleanInput(ratingStr)
 	rating := int32(5)
@@ -192,15 +192,15 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		}
 	}
 
-	fmt.Print("Enter notes: ")
+	fmt.Print("Nhập ghi chú: ")
 	notes, _ := reader.ReadString('\n')
 	notes = cleanInput(notes)
 
-	fmt.Print("Enter images: ")
+	fmt.Print("Nhập hình ảnh VD: [id1, id2, id3]: ")
 	images, _ := reader.ReadString('\n')
 	images = cleanInput(images)
 
-	fmt.Print("Enter created by: ")
+	fmt.Print("Nhập người tạo: ")
 	createdBy, _ := reader.ReadString('\n')
 	createdBy = cleanInput(createdBy)
 
@@ -231,7 +231,7 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 		return
 	}
 
-	fmt.Printf("Create Harvest Record result:\n")
+	fmt.Printf("Kết quả tạo bản ghi thu hoạch:\n")
 	if resp.HarvestRecord != nil {
 		fmt.Printf("ID: %s\n", resp.HarvestRecord.Id)
 		fmt.Printf("Planting Cycle ID: %s\n", resp.HarvestRecord.PlantingCycleId)
@@ -244,11 +244,11 @@ func (c *CropServiceClient) TestCreateHarvestRecord() {
 }
 
 func (c *CropServiceClient) TestGetHarvestRecord() {
-	fmt.Println("\n=== Test Get Harvest Record ===")
+	fmt.Println("\n=== Kiểm thử Lấy bản ghi Thu hoạch ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter harvest record ID: ")
+	fmt.Print("Nhập ID bản ghi thu hoạch: ")
 	id, _ := reader.ReadString('\n')
 	id = cleanInput(id)
 
@@ -263,30 +263,30 @@ func (c *CropServiceClient) TestGetHarvestRecord() {
 		return
 	}
 
-	fmt.Printf("Get Harvest Record result:\n")
+	fmt.Printf("Kết quả lấy bản ghi thu hoạch:\n")
 	if resp.HarvestRecord != nil {
 		fmt.Printf("ID: %s\n", resp.HarvestRecord.Id)
 		fmt.Printf("Planting Cycle ID: %s\n", resp.HarvestRecord.PlantingCycleId)
-		fmt.Printf("Quantity: %.2f kg\n", resp.HarvestRecord.QuantityKg)
-		fmt.Printf("Quality Grade: %s\n", resp.HarvestRecord.QualityGrade)
-		fmt.Printf("Size Classification: %s\n", resp.HarvestRecord.SizeClassification)
-		fmt.Printf("Market Price: %.2f per kg\n", resp.HarvestRecord.MarketPricePerKg)
-		fmt.Printf("Total Revenue: %.2f\n", resp.HarvestRecord.TotalRevenue)
-		fmt.Printf("Labor Hours: %.2f\n", resp.HarvestRecord.LaborHours)
-		fmt.Printf("Labor Cost: %.2f\n", resp.HarvestRecord.LaborCost)
-		fmt.Printf("Packaging Cost: %.2f\n", resp.HarvestRecord.PackagingCost)
-		fmt.Printf("Storage Location: %s\n", resp.HarvestRecord.StorageLocation)
-		fmt.Printf("Storage Temperature: %.2f°C\n", resp.HarvestRecord.StorageTemperature)
-		fmt.Printf("Buyer Information: %s\n", resp.HarvestRecord.BuyerInformation)
-		fmt.Printf("Weather at Harvest: %s\n", resp.HarvestRecord.WeatherAtHarvest)
-		fmt.Printf("Plant Health Rating: %d\n", resp.HarvestRecord.PlantHealthRating)
-		fmt.Printf("Notes: %s\n", resp.HarvestRecord.Notes)
-		fmt.Printf("Created By: %s\n", resp.HarvestRecord.CreatedBy)
+		fmt.Printf("Khối lượng: %.2f kg\n", resp.HarvestRecord.QuantityKg)
+		fmt.Printf("Hạng chất lượng: %s\n", resp.HarvestRecord.QualityGrade)
+		fmt.Printf("Phân loại kích cỡ: %s\n", resp.HarvestRecord.SizeClassification)
+		fmt.Printf("Giá thị trường: %.2f mỗi kg\n", resp.HarvestRecord.MarketPricePerKg)
+		fmt.Printf("Tổng doanh thu: %.2f\n", resp.HarvestRecord.TotalRevenue)
+		fmt.Printf("Số giờ lao động: %.2f\n", resp.HarvestRecord.LaborHours)
+		fmt.Printf("Chi phí lao động: %.2f\n", resp.HarvestRecord.LaborCost)
+		fmt.Printf("Chi phí đóng gói: %.2f\n", resp.HarvestRecord.PackagingCost)
+		fmt.Printf("Địa điểm lưu trữ: %s\n", resp.HarvestRecord.StorageLocation)
+		fmt.Printf("Nhiệt độ lưu trữ: %.2f°C\n", resp.HarvestRecord.StorageTemperature)
+		fmt.Printf("Thông tin người mua: %s\n", resp.HarvestRecord.BuyerInformation)
+		fmt.Printf("Thời tiết lúc thu hoạch: %s\n", resp.HarvestRecord.WeatherAtHarvest)
+		fmt.Printf("Đánh giá sức khỏe cây: %d\n", resp.HarvestRecord.PlantHealthRating)
+		fmt.Printf("Ghi chú: %s\n", resp.HarvestRecord.Notes)
+		fmt.Printf("Người tạo: %s\n", resp.HarvestRecord.CreatedBy)
 	}
 }
 
 func (c *CropServiceClient) TestListHarvestRecords() {
-	fmt.Println("\n=== Test List Harvest Records ===")
+	fmt.Println("\n=== Kiểm thử Liệt kê Bản ghi Thu hoạch ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -308,21 +308,21 @@ func (c *CropServiceClient) TestListHarvestRecords() {
 		return
 	}
 
-	fmt.Printf("List Harvest Records result:\n")
-	fmt.Printf("Total: %d\n", resp.Pagination.Total)
-	fmt.Printf("Harvest Records:\n")
+	fmt.Printf("Kết quả liệt kê bản ghi thu hoạch:\n")
+	fmt.Printf("Tổng số: %d\n", resp.Pagination.Total)
+	fmt.Printf("Danh sách bản ghi thu hoạch:\n")
 	for i, record := range resp.HarvestRecords {
-		fmt.Printf("  [%d] ID: %s, Planting Cycle: %s, Quantity: %.2f kg, Quality: %s\n",
+		fmt.Printf("  [%d] ID: %s, Chu kỳ trồng: %s, Khối lượng: %.2f kg, Chất lượng: %s\n",
 			i+1, record.Id, record.PlantingCycleId, record.QuantityKg, record.QualityGrade)
 	}
 }
 
 func (c *CropServiceClient) TestGetHarvestRecordsByPlantingCycle() {
-	fmt.Println("\n=== Test Get Harvest Records By Planting Cycle ===")
+	fmt.Println("\n=== Kiểm thử Lấy Bản ghi Thu hoạch theo Chu kỳ trồng ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter planting cycle ID: ")
+	fmt.Print("Nhập ID chu kỳ trồng: ")
 	plantingCycleId, _ := reader.ReadString('\n')
 	plantingCycleId = cleanInput(plantingCycleId)
 
@@ -345,11 +345,11 @@ func (c *CropServiceClient) TestGetHarvestRecordsByPlantingCycle() {
 		return
 	}
 
-	fmt.Printf("Get Harvest Records By Planting Cycle result:\n")
-	fmt.Printf("Total: %d\n", resp.Total)
-	fmt.Printf("Harvest Records:\n")
+	fmt.Printf("Kết quả lấy bản ghi thu hoạch theo chu kỳ trồng:\n")
+	fmt.Printf("Tổng số: %d\n", resp.Total)
+	fmt.Printf("Danh sách bản ghi thu hoạch:\n")
 	for i, record := range resp.HarvestRecords {
-		fmt.Printf("  [%d] ID: %s, Quantity: %.2f kg, Quality: %s, Revenue: %.2f\n",
+		fmt.Printf("  [%d] ID: %s, Khối lượng: %.2f kg, Chất lượng: %s, Doanh thu: %.2f\n",
 			i+1, record.Id, record.QuantityKg, record.QualityGrade, record.TotalRevenue)
 	}
 }
@@ -357,31 +357,31 @@ func (c *CropServiceClient) TestGetHarvestRecordsByPlantingCycle() {
 // ================== Pest Disease Record Service Tests ==================
 
 func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
-	fmt.Println("\n=== Test Create Pest Disease Record ===")
+	fmt.Println("\n=== Kiểm thử Tạo Bản ghi Sâu bệnh ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter planting cycle ID: ")
+	fmt.Print("Nhập ID chu kỳ trồng: ")
 	plantingCycleId, _ := reader.ReadString('\n')
 	plantingCycleId = cleanInput(plantingCycleId)
 
-	fmt.Print("Enter type (pest/disease/nutrient_deficiency/environmental_stress): ")
+	fmt.Print("Nhập loại (pest/disease/nutrient_deficiency/environmental_stress): ")
 	recordType, _ := reader.ReadString('\n')
 	recordType = cleanInput(recordType)
 
-	fmt.Print("Enter name: ")
+	fmt.Print("Nhập tên: ")
 	name, _ := reader.ReadString('\n')
 	name = cleanInput(name)
 
-	fmt.Print("Enter scientific name: ")
+	fmt.Print("Nhập tên khoa học: ")
 	scientificName, _ := reader.ReadString('\n')
 	scientificName = cleanInput(scientificName)
 
-	fmt.Print("Enter severity (low/medium/high/critical): ")
+	fmt.Print("Nhập mức độ (low/medium/high/critical): ")
 	severity, _ := reader.ReadString('\n')
 	severity = cleanInput(severity)
 
-	fmt.Print("Enter affected area percentage: ")
+	fmt.Print("Nhập tỷ lệ diện tích bị ảnh hưởng (%): ")
 	areaStr, _ := reader.ReadString('\n')
 	areaStr = cleanInput(areaStr)
 	area := float64(10.0)
@@ -391,7 +391,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter affected plant count: ")
+	fmt.Print("Nhập số lượng cây bị ảnh hưởng: ")
 	countStr, _ := reader.ReadString('\n')
 	countStr = cleanInput(countStr)
 	count := int32(10)
@@ -401,7 +401,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter detection date (YYYY-MM-DD): ")
+	fmt.Print("Nhập ngày phát hiện (YYYY-MM-DD): ")
 	detectionDateStr, _ := reader.ReadString('\n')
 	detectionDateStr = cleanInput(detectionDateStr)
 	var detectionDate *timestamppb.Timestamp
@@ -411,19 +411,19 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter detection method: ")
+	fmt.Print("Nhập phương pháp phát hiện: ")
 	detectionMethod, _ := reader.ReadString('\n')
 	detectionMethod = cleanInput(detectionMethod)
 
-	fmt.Print("Enter symptoms: ")
+	fmt.Print("Nhập triệu chứng: ")
 	symptoms, _ := reader.ReadString('\n')
 	symptoms = cleanInput(symptoms)
 
-	fmt.Print("Enter treatment applied: ")
+	fmt.Print("Nhập biện pháp điều trị đã áp dụng: ")
 	treatment, _ := reader.ReadString('\n')
 	treatment = cleanInput(treatment)
 
-	fmt.Print("Enter treatment date (YYYY-MM-DD): ")
+	fmt.Print("Nhập ngày điều trị (YYYY-MM-DD): ")
 	treatmentDateStr, _ := reader.ReadString('\n')
 	treatmentDateStr = cleanInput(treatmentDateStr)
 	var treatmentDate *timestamppb.Timestamp
@@ -433,7 +433,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter treatment cost: ")
+	fmt.Print("Nhập chi phí điều trị: ")
 	costStr, _ := reader.ReadString('\n')
 	costStr = cleanInput(costStr)
 	cost := float64(50.0)
@@ -443,7 +443,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter treatment duration days: ")
+	fmt.Print("Nhập thời gian điều trị (ngày): ")
 	durationStr, _ := reader.ReadString('\n')
 	durationStr = cleanInput(durationStr)
 	duration := int32(7)
@@ -453,11 +453,11 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter recovery status: ")
+	fmt.Print("Nhập trạng thái phục hồi: ")
 	recoveryStatus, _ := reader.ReadString('\n')
 	recoveryStatus = cleanInput(recoveryStatus)
 
-	fmt.Print("Enter effectiveness rating (1-5): ")
+	fmt.Print("Nhập đánh giá hiệu quả (1-5): ")
 	ratingStr, _ := reader.ReadString('\n')
 	ratingStr = cleanInput(ratingStr)
 	rating := int32(4)
@@ -467,7 +467,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter follow-up date (YYYY-MM-DD): ")
+	fmt.Print("Nhập ngày theo dõi (YYYY-MM-DD): ")
 	followUpDateStr, _ := reader.ReadString('\n')
 	followUpDateStr = cleanInput(followUpDateStr)
 	var followUpDate *timestamppb.Timestamp
@@ -477,23 +477,23 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		}
 	}
 
-	fmt.Print("Enter prevention measures: ")
+	fmt.Print("Nhập biện pháp phòng ngừa: ")
 	prevention, _ := reader.ReadString('\n')
 	prevention = cleanInput(prevention)
 
-	fmt.Print("Enter environmental factors: ")
+	fmt.Print("Nhập yếu tố môi trường: ")
 	environmental, _ := reader.ReadString('\n')
 	environmental = cleanInput(environmental)
 
-	fmt.Print("Enter images: ")
+	fmt.Print("Nhập hình ảnh: ")
 	images, _ := reader.ReadString('\n')
 	images = cleanInput(images)
 
-	fmt.Print("Enter notes: ")
+	fmt.Print("Nhập ghi chú: ")
 	notes, _ := reader.ReadString('\n')
 	notes = cleanInput(notes)
 
-	fmt.Print("Enter created by: ")
+	fmt.Print("Nhập người tạo: ")
 	createdBy, _ := reader.ReadString('\n')
 	createdBy = cleanInput(createdBy)
 
@@ -529,7 +529,7 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 		return
 	}
 
-	fmt.Printf("Create Pest Disease Record result:\n")
+	fmt.Printf("Kết quả tạo bản ghi sâu bệnh:\n")
 	if resp.PestDiseaseRecord != nil {
 		fmt.Printf("ID: %s\n", resp.PestDiseaseRecord.Id)
 		fmt.Printf("Planting Cycle ID: %s\n", resp.PestDiseaseRecord.PlantingCycleId)
@@ -548,11 +548,11 @@ func (c *CropServiceClient) TestCreatePestDiseaseRecord() {
 }
 
 func (c *CropServiceClient) TestGetPestDiseaseRecord() {
-	fmt.Println("\n=== Test Get Pest Disease Record ===")
+	fmt.Println("\n=== Kiểm thử Lấy Bản ghi Sâu bệnh ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter pest disease record ID: ")
+	fmt.Print("Nhập ID bản ghi sâu bệnh: ")
 	id, _ := reader.ReadString('\n')
 	id = cleanInput(id)
 
@@ -567,32 +567,32 @@ func (c *CropServiceClient) TestGetPestDiseaseRecord() {
 		return
 	}
 
-	fmt.Printf("Get Pest Disease Record result:\n")
+	fmt.Printf("Kết quả lấy bản ghi sâu bệnh:\n")
 	if resp.PestDiseaseRecord != nil {
 		fmt.Printf("ID: %s\n", resp.PestDiseaseRecord.Id)
 		fmt.Printf("Planting Cycle ID: %s\n", resp.PestDiseaseRecord.PlantingCycleId)
-		fmt.Printf("Type: %s\n", resp.PestDiseaseRecord.Type)
-		fmt.Printf("Name: %s\n", resp.PestDiseaseRecord.Name)
-		fmt.Printf("Scientific Name: %s\n", resp.PestDiseaseRecord.ScientificName)
-		fmt.Printf("Severity: %s\n", resp.PestDiseaseRecord.Severity)
-		fmt.Printf("Affected Area: %.2f%%\n", resp.PestDiseaseRecord.AffectedAreaPercentage)
-		fmt.Printf("Affected Plants: %d\n", resp.PestDiseaseRecord.AffectedPlantCount)
-		fmt.Printf("Detection Method: %s\n", resp.PestDiseaseRecord.DetectionMethod)
+		fmt.Printf("Loại: %s\n", resp.PestDiseaseRecord.Type)
+		fmt.Printf("Tên: %s\n", resp.PestDiseaseRecord.Name)
+		fmt.Printf("Tên khoa học: %s\n", resp.PestDiseaseRecord.ScientificName)
+		fmt.Printf("Mức độ: %s\n", resp.PestDiseaseRecord.Severity)
+		fmt.Printf("Diện tích bị ảnh hưởng: %.2f%%\n", resp.PestDiseaseRecord.AffectedAreaPercentage)
+		fmt.Printf("Số cây bị ảnh hưởng: %d\n", resp.PestDiseaseRecord.AffectedPlantCount)
+		fmt.Printf("Phương pháp phát hiện: %s\n", resp.PestDiseaseRecord.DetectionMethod)
 		fmt.Printf("Symptoms: %s\n", resp.PestDiseaseRecord.Symptoms)
-		fmt.Printf("Treatment Applied: %s\n", resp.PestDiseaseRecord.TreatmentApplied)
-		fmt.Printf("Treatment Cost: %.2f\n", resp.PestDiseaseRecord.TreatmentCost)
+		fmt.Printf("Biện pháp điều trị: %s\n", resp.PestDiseaseRecord.TreatmentApplied)
+		fmt.Printf("Chi phí điều trị: %.2f\n", resp.PestDiseaseRecord.TreatmentCost)
 		fmt.Printf("Treatment Duration: %d days\n", resp.PestDiseaseRecord.TreatmentDurationDays)
-		fmt.Printf("Recovery Status: %s\n", resp.PestDiseaseRecord.RecoveryStatus)
-		fmt.Printf("Effectiveness Rating: %d\n", resp.PestDiseaseRecord.EffectivenessRating)
-		fmt.Printf("Prevention Measures: %s\n", resp.PestDiseaseRecord.PreventionMeasures)
-		fmt.Printf("Environmental Factors: %s\n", resp.PestDiseaseRecord.EnvironmentalFactors)
-		fmt.Printf("Notes: %s\n", resp.PestDiseaseRecord.Notes)
-		fmt.Printf("Created By: %s\n", resp.PestDiseaseRecord.CreatedBy)
+		fmt.Printf("Trạng thái phục hồi: %s\n", resp.PestDiseaseRecord.RecoveryStatus)
+		fmt.Printf("Đánh giá hiệu quả: %d\n", resp.PestDiseaseRecord.EffectivenessRating)
+		fmt.Printf("Biện pháp phòng ngừa: %s\n", resp.PestDiseaseRecord.PreventionMeasures)
+		fmt.Printf("Yếu tố môi trường: %s\n", resp.PestDiseaseRecord.EnvironmentalFactors)
+		fmt.Printf("Ghi chú: %s\n", resp.PestDiseaseRecord.Notes)
+		fmt.Printf("Người tạo: %s\n", resp.PestDiseaseRecord.CreatedBy)
 	}
 }
 
 func (c *CropServiceClient) TestListPestDiseaseRecords() {
-	fmt.Println("\n=== Test List Pest Disease Records ===")
+	fmt.Println("\n=== Kiểm thử Liệt kê Bản ghi Sâu bệnh ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -614,21 +614,21 @@ func (c *CropServiceClient) TestListPestDiseaseRecords() {
 		return
 	}
 
-	fmt.Printf("List Pest Disease Records result:\n")
-	fmt.Printf("Total: %d\n", resp.Total)
-	fmt.Printf("Pest Disease Records:\n")
+	fmt.Printf("Kết quả liệt kê bản ghi sâu bệnh:\n")
+	fmt.Printf("Tổng số: %d\n", resp.Total)
+	fmt.Printf("Danh sách bản ghi sâu bệnh:\n")
 	for i, record := range resp.PestDiseaseRecords {
-		fmt.Printf("  [%d] ID: %s, Type: %s, Name: %s, Severity: %s\n",
+		fmt.Printf("  [%d] ID: %s, Loại: %s, Tên: %s, Mức độ: %s\n",
 			i+1, record.Id, record.Type, record.Name, record.Severity)
 	}
 }
 
 func (c *CropServiceClient) TestGetPestDiseaseRecordsByPlantingCycle() {
-	fmt.Println("\n=== Test Get Pest Disease Records By Planting Cycle ===")
+	fmt.Println("\n=== Kiểm thử Lấy Bản ghi Sâu bệnh theo Chu kỳ trồng ===")
 
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Enter planting cycle ID: ")
+	fmt.Print("Nhập ID chu kỳ trồng: ")
 	plantingCycleId, _ := reader.ReadString('\n')
 	plantingCycleId = cleanInput(plantingCycleId)
 
@@ -651,11 +651,11 @@ func (c *CropServiceClient) TestGetPestDiseaseRecordsByPlantingCycle() {
 		return
 	}
 
-	fmt.Printf("Get Pest Disease Records By Planting Cycle result:\n")
-	fmt.Printf("Total: %d\n", resp.Total)
-	fmt.Printf("Pest Disease Records:\n")
+	fmt.Printf("Kết quả lấy bản ghi sâu bệnh theo chu kỳ trồng:\n")
+	fmt.Printf("Tổng số: %d\n", resp.Total)
+	fmt.Printf("Danh sách bản ghi sâu bệnh:\n")
 	for i, record := range resp.PestDiseaseRecords {
-		fmt.Printf("  [%d] ID: %s, Type: %s, Name: %s, Severity: %s, Status: %s\n",
+		fmt.Printf("  [%d] ID: %s, Loại: %s, Tên: %s, Mức độ: %s, Trạng thái: %s\n",
 			i+1, record.Id, record.Type, record.Name, record.Severity, record.RecoveryStatus)
 	}
 }
@@ -663,31 +663,31 @@ func (c *CropServiceClient) TestGetPestDiseaseRecordsByPlantingCycle() {
 // ================== Menu Functions ==================
 
 func printMainMenu() {
-	fmt.Println("\n=== gRPC Production Service Test Client ===")
-	fmt.Println("1. Harvest Record Service")
-	fmt.Println("2. Pest Disease Record Service")
-	fmt.Println("0. Exit")
-	fmt.Print("Enter your choice: ")
+	fmt.Println("\n=== Ứng dụng kiểm thử gRPC Production Service ===")
+	fmt.Println("1. Dịch vụ Bản ghi Thu hoạch")
+	fmt.Println("2. Dịch vụ Bản ghi Sâu bệnh")
+	fmt.Println("0. Thoát")
+	fmt.Print("Nhập lựa chọn của bạn: ")
 }
 
 func printHarvestRecordMenu() {
-	fmt.Println("\n=== Harvest Record Service ===")
-	fmt.Println("1. Create Harvest Record")
-	fmt.Println("2. Get Harvest Record")
-	fmt.Println("3. List Harvest Records")
-	fmt.Println("4. Get Harvest Records By Planting Cycle")
-	fmt.Println("0. Back to Main Menu")
-	fmt.Print("Enter your choice: ")
+	fmt.Println("\n=== Dịch vụ Bản ghi Thu hoạch ===")
+	fmt.Println("1. Tạo bản ghi thu hoạch")
+	fmt.Println("2. Lấy bản ghi thu hoạch")
+	fmt.Println("3. Liệt kê bản ghi thu hoạch")
+	fmt.Println("4. Lấy bản ghi theo chu kỳ trồng")
+	fmt.Println("0. Quay lại menu chính")
+	fmt.Print("Nhập lựa chọn của bạn: ")
 }
 
 func printPestDiseaseRecordMenu() {
-	fmt.Println("\n=== Pest Disease Record Service ===")
-	fmt.Println("1. Create Pest Disease Record")
-	fmt.Println("2. Get Pest Disease Record")
-	fmt.Println("3. List Pest Disease Records")
-	fmt.Println("4. Get Pest Disease Records By Planting Cycle")
-	fmt.Println("0. Back to Main Menu")
-	fmt.Print("Enter your choice: ")
+	fmt.Println("\n=== Dịch vụ Bản ghi Sâu bệnh ===")
+	fmt.Println("1. Tạo bản ghi sâu bệnh")
+	fmt.Println("2. Lấy bản ghi sâu bệnh")
+	fmt.Println("3. Liệt kê bản ghi sâu bệnh")
+	fmt.Println("4. Lấy bản ghi theo chu kỳ trồng")
+	fmt.Println("0. Quay lại menu chính")
+	fmt.Print("Nhập lựa chọn của bạn: ")
 }
 
 func main() {
@@ -696,14 +696,14 @@ func main() {
 		address = os.Args[1]
 	}
 
-	fmt.Printf("Connecting to gRPC server at %s...\n", address)
+	fmt.Printf("Đang kết nối tới máy chủ gRPC tại %s...\n", address)
 	client, err := NewCropServiceClient(address)
 	if err != nil {
 		log.Fatalf("Failed to create gRPC client: %v", err)
 	}
 	defer client.Close()
 
-	fmt.Println("Connected successfully!")
+	fmt.Println("Kết nối thành công!")
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -714,7 +714,7 @@ func main() {
 
 		switch choice {
 		case "1":
-			// Harvest Record Service
+			// Dịch vụ Bản ghi Thu hoạch
 			for {
 				printHarvestRecordMenu()
 				subChoice, _ := reader.ReadString('\n')
@@ -739,7 +739,7 @@ func main() {
 				}
 			}
 		case "2":
-			// Pest Disease Record Service
+			// Dịch vụ Bản ghi Sâu bệnh
 			for {
 				printPestDiseaseRecordMenu()
 				subChoice, _ := reader.ReadString('\n')
@@ -764,10 +764,10 @@ func main() {
 				}
 			}
 		case "0":
-			fmt.Println("Goodbye!")
+			fmt.Println("Tạm biệt!")
 			return
 		default:
-			fmt.Println("Invalid choice. Please try again.")
+			fmt.Println("Lựa chọn không hợp lệ. Vui lòng thử lại.")
 		}
 	}
 }

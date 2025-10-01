@@ -1,7 +1,7 @@
 node_env: "development"
-url_db: "postgres://postgres:123456@localhost:5432/crop_service_db?sslmode=disable"
-name_service: "CropService"
-port_grpc: 50055
+url_db: "postgres://postgres:123456@localhost:5432/production_service_db?sslmode=disable"
+name_service: "ProductionService"
+port_grpc: 50056
 host_grpc: "localhost"
 interval_check: "20s"
 timeout_check: "15s"
