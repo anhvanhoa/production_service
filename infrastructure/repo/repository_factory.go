@@ -12,8 +12,7 @@ type RepositoryFactory struct {
 	utils utils.Helper
 }
 
-func NewRepositoryFactory(db *pg.DB) *RepositoryFactory {
-	utils := utils.NewHelper()
+func NewRepositoryFactory(db *pg.DB, utils utils.Helper) *RepositoryFactory {
 	return &RepositoryFactory{
 		db:    db,
 		utils: utils,
